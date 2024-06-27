@@ -26,7 +26,7 @@ class CartScreen extends StatelessWidget {
                 final product = products.values.toList()[index]['product'];
                 return ChangeNotifierProvider<Product>.value(
                   value: product,
-                  child: const ProductItem(),
+                  child: ProductItem(),
                 );
               },
             ),

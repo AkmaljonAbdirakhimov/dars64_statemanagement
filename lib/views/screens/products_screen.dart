@@ -1,6 +1,6 @@
-import 'package:dars64_statemanagement/controllers/cart_controller.dart';
 import 'package:dars64_statemanagement/controllers/products_controller.dart';
 import 'package:dars64_statemanagement/views/screens/cart_screen.dart';
+import 'package:dars64_statemanagement/views/widgets/add_product_dialog.dart';
 import 'package:dars64_statemanagement/views/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +10,9 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsController = Provider.of<ProductsController>(context);
+    final productsController = context.watch<ProductsController>();
+    // Provider.of<ProductsController>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("D I N A M O"),
@@ -39,6 +41,18 @@ class ProductsScreen extends StatelessWidget {
             child: ProductItem(),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (ctx) {
+              return AddProductDialog();
+            },
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
